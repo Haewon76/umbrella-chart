@@ -1,6 +1,6 @@
 # nameOverride: auth
 replicaCount: 1
 image:
-  repository: nginx
-  tag: 1.29-perl # 변경 감지 테스트시 1.29-perl
+  repository: haeseung
+  tag: 1.29-perl-test # 변경 감지 테스트시 1.29-perl
   pullPolicy: IfNotPresent
