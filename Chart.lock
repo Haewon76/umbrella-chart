@@ -1,0 +1,9 @@
+dependencies:
+- name: gateway
+  repository: file://./gateway
+  version: 0.1.0
+- name: auth
+  repository: file://./auth
+  version: 0.1.0
+digest: sha256:dff8c4c5f72ec993127a5fc7df92431e3aaa6dcf1496e2c1de0862efe540a32d
+generated: "2025-10-24T15:34:01.930168+09:00"

@@ -1,0 +1,6 @@
+# nameOverride: gateway
+replicaCount: 1
+image:
+  repository: nginx
+  tag: 1.28-perl # 변경 감지 테스트시 1.29-perl
+  pullPolicy: IfNotPresent
