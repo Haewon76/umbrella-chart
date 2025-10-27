@@ -1,1 +1,0 @@
-{{- include "common-template.deployment" . | nindent 0 }}

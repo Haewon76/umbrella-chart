@@ -1,0 +1,45 @@
+{{- define "common-template.rollout" }}
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: {{ include "common-template.fullname" . }}
+  labels:
+    {{- include "common-template.labels" . | nindent 4 }}
+spec:
+  {{- if not .Values.autoscaling.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      {{- include "common-template.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "common-template.selectorLabels" . | nindent 8 }}
+    spec:
+      serviceAccountName: {{ include "common-template.serviceAccountName" . }}
+      containers:
+        - name: {{ .Chart.Name }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          ports:
+            - name: http
+              containerPort: 10000
+              protocol: TCP
+  strategy:
+    blueGreen:
+      activeService: {{ include "common-template.name" . }}-rollout-active-svc
+      previewService: {{ include "common-template.name" . }}-rollout-previews-svc
+      autoPromotionEnabled: {{ .Values.rollout.strategy.blueGreen.autoPromotionEnabled}} # Blue/Green 자동 스위칭 옵션
+      previewReplicaCount: 1 # Blue/Green Preview Replica 수
+{{- end }}
