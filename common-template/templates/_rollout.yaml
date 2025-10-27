@@ -22,7 +22,7 @@ spec:
       labels:
         {{- include "common-template.selectorLabels" . | nindent 8 }}
     spec:
-      serviceAccountName: {{ include "common-template.serviceAccountName" . }}
+      # serviceAccountName: {{ include "common-template.serviceAccountName" . }}
       containers:
         - name: {{ .Chart.Name }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
