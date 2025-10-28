@@ -38,8 +38,8 @@ spec:
               protocol: TCP
   strategy:
     blueGreen:
-      activeService: {{ include ".Chart.Name.common-template.name" . }}-rollout-active-svc
-      previewService: {{ include ".Chart.Name.common-template.name" . }}-rollout-previews-svc
+      activeService: {{ include "common-template.name" . }}-rollout-active-svc
+      previewService: {{ include "common-template.name" . }}-rollout-previews-svc
       autoPromotionEnabled: {{ .Values.rollout.strategy.blueGreen.autoPromotionEnabled}} # Blue/Green 자동 스위칭 옵션
       previewReplicaCount: 1 # Blue/Green Preview Replica 수
 {{- end }}
