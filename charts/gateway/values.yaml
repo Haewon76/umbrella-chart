@@ -2,5 +2,40 @@
 replicaCount: 1
 image:
   repository: haeseung/nginx
-  tag: 1.29-perl-test # 변경 감지 테스트시 1.29-perl
+  tag: 1.28-perl-test # 변경 감지 테스트시 1.29-perl
   pullPolicy: IfNotPresent
+# configmap:
+#   enabled: true
+#   values:
+#     SPRING_PROFILES_ACTIVE: dev-new
+#     config_host: cm-config-rollout-active-svc.cm-dev # configmap
+rollout:
+  strategy:
+    blueGreen:
+      autoPromotionEnabled: true
+# envFrom:
+#   - secretRef:
+#       name: config-key-scr
+secrets:
+  enabled: false
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+serviceAccount:
+  # Specifies whether a service account should be created
+  create: true
+  # Annotations to add to the service account
+  annotations: {}
+  # The name of the service account to use.
+  # If not set and create is true, a name is generated using the fullname template
+  name: ""
+
+service:
+  type: ClusterIP
+  port: 8080
+  clusterIP: None

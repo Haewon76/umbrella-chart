@@ -1,6 +1,6 @@
 dependencies:
 - name: common-template
-  repository: file://../common-template
+  repository: file://../../common-template
   version: 0.1.0
-digest: sha256:7a798ddef8a8fc8218d344a4e8f4d44e360fab59fc355e2ba5456ccffbd4b480
-generated: "2025-10-24T15:29:08.22764+09:00"
+digest: sha256:5cced62ab8b2df83f6eb2e1a106191433ecb6379dbe74e82fe1a2b8183663775
+generated: "2025-10-28T10:40:28.968896+09:00"
