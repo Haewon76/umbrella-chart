@@ -2,7 +2,7 @@
 replicaCount: 1
 image:
   repository: haeseung/nginx
-  tag: 1.28-perl-test # 변경 감지 테스트시 1.29-perl
+  tag: 1.29-perl-test # 변경 감지 테스트시 1.29-perl
   pullPolicy: IfNotPresent
 # configmap:
 #   enabled: true
