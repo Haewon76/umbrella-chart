@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "common-template.fullname" . }}-rollout-active-svc
+  name: {{ include "common-template.name" . }}-rollout-active-svc
   labels:
     {{- include "common-template.labels" . | nindent 4 }}
 spec:
