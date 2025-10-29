@@ -4,18 +4,20 @@ image:
   repository: haeseung/payment-api
   tag: v0.0.1
   pullPolicy: IfNotPresent
-# configmap:
-#   enabled: true
-#   values:
-#     SPRING_PROFILES_ACTIVE: dev-new
-#     config_host: cm-config-rollout-active-svc.cm-dev # configmap
+configmap:
+  enabled: true
+  values:
+    SPRING_PROFILES_ACTIVE: dev
+    # config_host: cm-config-rollout-active-svc.cm-dev # configmap
 rollout:
   strategy:
     blueGreen:
       autoPromotionEnabled: true
-# envFrom:
-#   - secretRef:
-#       name: config-key-scr
+envFrom:
+  - configMapRef:
+    name: umbrella-gateway-cm
+  # - secretRef:
+  #     name: config-key-scr
 secrets:
   enabled: false
 
