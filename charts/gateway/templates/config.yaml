@@ -1,0 +1,1 @@
+{{- include "common-template.configmap" . | nindent 0 }}
