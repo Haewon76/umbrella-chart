@@ -1,8 +1,8 @@
 # nameOverride: auth
 replicaCount: 1
 image:
-  repository: haeseung/nginx
-  tag: 1.29-perl-test # 변경 감지 테스트시 1.29-perl
+  repository: haeseung/auth-api
+  tag: v0.0.1
   pullPolicy: IfNotPresent
 # configmap:
 #   enabled: true

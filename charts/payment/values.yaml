@@ -1,7 +1,7 @@
 # nameOverride: gateway
 replicaCount: 1
 image:
-  repository: haeseung/gateway
+  repository: haeseung/payment-api
   tag: v0.0.1
   pullPolicy: IfNotPresent
 # configmap:
