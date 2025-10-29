@@ -14,8 +14,8 @@ rollout:
     blueGreen:
       autoPromotionEnabled: true
 envFrom:
-  - configMapRef:
-      name: umbrella-payment-cm
+  configMapRef:
+    name: umbrella-payment-cm
   # - secretRef:
   #     name: config-key-scr
 secrets:
