@@ -15,7 +15,7 @@ rollout:
       autoPromotionEnabled: true
 envFrom:
   - configMapRef:
-    name: umbrella-gateway-cm
+      name: umbrella-gateway-cm
   # - secretRef:
   #     name: config-key-scr
 secrets:
