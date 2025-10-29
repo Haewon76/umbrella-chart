@@ -1,4 +1,4 @@
-# nameOverride: gateway
+# nameOverride: payment
 replicaCount: 1
 image:
   repository: haeseung/payment-api
@@ -15,7 +15,7 @@ rollout:
       autoPromotionEnabled: true
 envFrom:
   - configMapRef:
-      name: umbrella-gateway-cm
+      name: umbrella-payment-cm
   # - secretRef:
   #     name: config-key-scr
 secrets:
