@@ -24,20 +24,16 @@ spec:
     spec:
       # serviceAccountName: {{ include "common-template.serviceAccountName" . }}
       containers:
-        - name: {{ .Chart.Name }}
+        - name: {{ .Values.customContainerName | default .Chart.Name }}
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
-          env:
-            - name: POD_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
           envFrom:
-            - configMapRef:
-                name: umbrella-payment-cm
+            {{- toYaml .Values.envFrom | nindent 12 }}
           ports:
             - name: http
-              containerPort: 10000
+              containerPort: 20000
               protocol: TCP
   strategy:
     blueGreen:
