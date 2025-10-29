@@ -21,6 +21,10 @@ envFrom:
 secrets:
   enabled: false
 
+containers:
+  ports:
+    containerPort: 30001
+
 autoscaling:
   enabled: false
   minReplicas: 1

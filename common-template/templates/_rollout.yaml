@@ -33,7 +33,7 @@ spec:
             {{- toYaml .Values.envFrom | nindent 12 }}
           ports:
             - name: http
-              containerPort: 20000
+              containerPort: {{ .Values.containers.ports.containerPort }}
               protocol: TCP
   strategy:
     blueGreen:
