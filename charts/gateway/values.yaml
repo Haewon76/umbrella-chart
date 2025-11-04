@@ -2,7 +2,7 @@
 replicaCount: 1
 image:
   repository: haeseung/gateway
-  tag: v0.0.3
+  tag: v0.0.4
   pullPolicy: IfNotPresent
 configmap:
   enabled: true
